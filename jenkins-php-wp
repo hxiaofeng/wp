@@ -1,0 +1,14 @@
+node ("109") {
+    stage('git checkout') {
+         checkout([$class: 'GitSCM', branches: [[name: '${branch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:hxiaofeng/wp.git']]])
+    }
+    stage('code copy') {
+        sh '''rm -rf ${WORKSPACE}/.git
+        mv /usr/share/nginx/html/test.aliangedu.com /data/backup/
+        test.aliangedu.com-$(date +"%F_%T")
+        cp -rf ${WORKSPACE} /usr/share/nginx/html/test.aliangedu.com'''
+    }
+    stage('test'){
+        // sh "curl http://test.aliangedu.com/status.html"
+    }
+}
