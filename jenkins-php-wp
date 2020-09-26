@@ -1,6 +1,6 @@
 node ("109") {
     stage('git checkout') {
-         checkout([$class: 'GitSCM', branches: [[name: '${branch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:hxiaofeng/wp.git']]])
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'aa112e32-0eac-4b89-b376-a33d65d20c59', url: 'git@github.com:hxiaofeng/wp.git']]])
     }
     stage('code copy') {
         sh '''rm -rf ${WORKSPACE}/.git
