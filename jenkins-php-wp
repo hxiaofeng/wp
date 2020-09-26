@@ -4,7 +4,7 @@ node ("109") {
     }
     stage('code copy') {
         sh '''rm -rf ${WORKSPACE}/.git
-        rm -rf ${WORKSPACE}/jenkins-php-wp
+        rm -rf jenkins-php-wp
         mv /usr/share/nginx/html/web /data/backup/web-$(date +"%F_%T")
         cp -rf ${WORKSPACE} /usr/share/nginx/html/web'''
     }
